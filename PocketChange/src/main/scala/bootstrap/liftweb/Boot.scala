@@ -74,8 +74,8 @@ object DBVendor extends ConnectionManager {
       */
 
       Class.forName("org.h2.Driver")
-      val dm = DriverManager.getConnection("jdbc:h2:pca_example")
-      Full(dm)
+      val conn = DriverManager.getConnection("jdbc:h2:pca_example")
+      Full(conn)
     } catch {
       case e : Exception => e.printStackTrace; Empty
     }
