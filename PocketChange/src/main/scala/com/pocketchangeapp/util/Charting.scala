@@ -29,10 +29,10 @@ object Charting {
   private def withAccount (name : String)(f : Account => Box[LiftResponse]) : Box[LiftResponse] = 
     User.currentUser match {
       case Full(user) => {
-	Account.findByName(user, name) match {
-	  case acct :: Nil => f(acct)
-	  case _ => Empty
-	}
+        Account.findByName(user, name) match {
+          case acct :: Nil => f(acct)
+          case _ => Empty
+        }
       }
       case _ => Full(RedirectResponse("/user_mgt/login")) // Must have a user to access accounts
     }
